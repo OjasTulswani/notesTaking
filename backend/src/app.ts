@@ -1,25 +1,24 @@
-import express, { Express, Request, Response } from "express";
-import NoteModel from "./models/note";
+import express, { Express, Request, Response, NextFunction } from "express";
+import notesRoutes from './routes/note'
+import morgan from "morgan"; 
+import errorHandler from "./middlewares/errorHandler";
 
 
 
 const app: Express = express();
 
 
-app.get("/", async (req : Request, res : Response, next) => {
-  try {
-    const notes = await NoteModel.find().exec();
-    res.status(200).json(notes);
-    throw Error("Bhai ho jaa!");
-  } catch (error) {
-      next(error);
-  }
+app.use(morgan("dev"));
+
+app.use(express.json());
+
+app.use("/api/notes", notesRoutes);
+
+app.use((req : Request, res : Response, next: NextFunction) => {
+    next(Error("Endpoint not found"));
 });
 
-app.use((req, res, next) => {
-  next(Error("Endpoint not found"));
-});
-
-
+// error handler middleware
+app.use(errorHandler)
 
 export default app;
