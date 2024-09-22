@@ -2,7 +2,7 @@ import express, { Express, Request, Response, NextFunction } from "express";
 import notesRoutes from './routes/note'
 import morgan from "morgan"; 
 import errorHandler from "./middlewares/errorHandler";
-
+import createHttpError from "http-errors";
 
 
 const app: Express = express();
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use("/api/notes", notesRoutes);
 
 app.use((req : Request, res : Response, next: NextFunction) => {
-    next(Error("Endpoint not found"));
+    next(createHttpError(404, "Endpoint not found"));
 });
 
 // error handler middleware
