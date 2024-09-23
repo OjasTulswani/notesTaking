@@ -4,7 +4,7 @@ import { NoteType } from "../types/notes";
 import * as api from "../api/notes_api"
 
 
-const Home = () => {
+const Note = () => {
     const [notes, setNotes] = useState<NoteType['notes'][]>([]);
       useEffect(() => {
         api.fetchNotes().then(response => {
@@ -20,6 +20,6 @@ const Home = () => {
     );
   };
   
-  export default Home;
+  export default Note;
 
  
