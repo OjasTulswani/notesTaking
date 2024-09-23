@@ -1,12 +1,17 @@
-import React from 'react';
+
 import NoteCard from './NoteCard';
 import { NoteType } from '../types/notes';
 
-const NoteList: React.FC<{notes : NoteType['notes'][]}> = ({ notes }) => {
+interface NoteListProps {
+  notes : NoteType['notes'][],
+  
+}
+
+const NoteList= ({ notes } : NoteListProps) => {
   return (
-    <ul className="list-none mb-4">
-      {notes.map((note) => (
-        <li key={note._id} className="mb-4">
+    <ul className="flex flex-wrap justify-center mb-4">
+      {notes.map((note, index) => (
+        <li key={note._id} className={`mb-4 w-full sm:w-1/2 md:w-1/2 xl:w-1/2 ${index % 2 === 0 ? 'pr-4' : 'pl-4'}`}>
           <NoteCard note={note} />
         </li>
       ))}

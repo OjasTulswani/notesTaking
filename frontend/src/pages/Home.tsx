@@ -1,26 +1,15 @@
 import { useState, useEffect } from "react";
 import NoteList from "../components/NoteList";
 import { NoteType } from "../types/notes";
-import api from "../api/api";
-// import axios from "axios";
+import * as api from "../api/notes_api"
+
 
 const Home = () => {
     const [notes, setNotes] = useState<NoteType['notes'][]>([]);
-
-
-
-    const fetchNotes = async () => {
-        try {
-          const response = await api.get('/notes');
-          console.log(response);
-          setNotes(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-    
       useEffect(() => {
-        fetchNotes();
+        api.fetchNotes().then(response => {
+          setNotes(response.data)
+        });
       }, []);
   
     return (
