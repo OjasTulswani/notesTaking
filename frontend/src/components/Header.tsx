@@ -1,14 +1,15 @@
+import { Link } from "react-router-dom";
 function Header() {
     
   return (
     <header className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-gray-100 text-sm py-3">
       <nav className="max-w-[85rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
-        <a
+        <Link
           className="sm:order-1 flex-none text-xl font-semibold focus:outline-none focus:opacity-80"
-          href="#"
+          to="/notes"
         >
           Memo
-        </a>
+        </Link>
         <div className="sm:order-3 flex items-center gap-x-2">
           <button
             type="button"
@@ -78,9 +79,9 @@ function Header() {
   <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" >
     <div className="py-1" role="none">
       {/* <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" --> */}
-      <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" id="menu-item-0">xyz@email.com</a>
-      <form method="POST" action="#" role="none">
-        <button type="submit" className="block w-full px-4 py-2 text-left text-sm text-gray-700" role="menuitem" id="menu-item-3">Sign out</button>
+      <p className="block px-4 py-2 text-sm text-gray-700" role="menuitem" id="menu-item-0">xyz@email.com</p>
+      <form method="POST" action="/" role="none">
+        <Link to = "/" className="block w-full px-4 py-2 text-left text-sm text-gray-700" role="menuitem" id="menu-item-3">Sign out</Link>
       </form>
     </div>
   </div>

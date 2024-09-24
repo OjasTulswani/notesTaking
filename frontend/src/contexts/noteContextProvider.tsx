@@ -55,6 +55,8 @@ export const NotesProvider = ({ children }: ChildrenType): ReactElement => {
   const updateNote = async (noteId: string, note: NoteInput) => {
     try {
       const response = await apiEndpoints.updateNote(noteId, note);
+
+     // get
       setNotes(notes.map((n) => n._id === noteId ? response.data : n));
     } catch (error) {
       console.log(error);

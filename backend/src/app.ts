@@ -1,5 +1,6 @@
 import express, { Express, Request, Response, NextFunction } from "express";
 import notesRoutes from './routes/note'
+import userRoutes from "./routes/user";
 import morgan from "morgan"; 
 import errorHandler from "./middlewares/errorHandler";
 import createHttpError from "http-errors";
@@ -15,6 +16,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/notes", notesRoutes);
+
+app.use("/api/users", userRoutes);
 
 app.use((req : Request, res : Response, next: NextFunction) => {
     next(createHttpError(404, "Endpoint not found"));
