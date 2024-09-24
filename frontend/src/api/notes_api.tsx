@@ -1,7 +1,6 @@
-// import axios, { AxiosResponse } from 'axios';
-// import { NoteType as Note } from '../types/notes';
+
 import api from './api';
-interface NoteInput {
+export interface NoteInput {
   title: string,
   text?: string,
 }

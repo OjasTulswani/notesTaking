@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
-import NoteModel from "../models/note";
 import createHttpError from "http-errors";
 import mongoose from "mongoose";
+import NoteModel from "../models/note";
 
 export const getNotes: RequestHandler = async (req, res, next) => {
     try {
@@ -33,8 +33,8 @@ export const getNote: RequestHandler = async (req, res, next) => {
 };
 
 interface CreateNoteBody {
-    title?: string,
-    text?: string,
+    title: string,
+    text: string,
 }
 
 export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknown> = async (req, res, next) => {
@@ -62,8 +62,8 @@ interface UpdateNoteParams {
 }
 
 interface UpdateNoteBody {
-    title?: string,
-    text?: string,
+    title: string,
+    text: string,
 }
 
 export const updateNote: RequestHandler<UpdateNoteParams, unknown, UpdateNoteBody, unknown> = async(req, res, next) => {
@@ -117,4 +117,4 @@ export const deleteNote: RequestHandler = async(req, res, next) => {
     } catch (error) {
       next(error);  
     }
-}
+};

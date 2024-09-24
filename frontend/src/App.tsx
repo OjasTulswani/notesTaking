@@ -1,19 +1,20 @@
 
 
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import Header from "./components/Header"
-import LandingPage from "./pages/landing/LandingPage"
-// import Note from './pages/Note'
+import Landing from "./pages/landing/Landing"
+import Notes from './pages/note/Notes'
 
 function App() {
   
 
   return (
-    <>
-    <Header />
-    {/* <Note /> */}
-    <LandingPage />
-    </>
+    <BrowserRouter>
+      <Routes>
+        < Route path="/" element={<Landing /> } />
+        < Route path="/notes" element={<Notes /> } />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

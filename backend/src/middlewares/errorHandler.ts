@@ -10,6 +10,7 @@ const errorHandler = (error: unknown, req: Request, res : Response, next: NextFu
         errorMessage = error.message;
     }
     res.status(statusCode).json({ error: errorMessage });
+    next();
 }
 
 export default errorHandler;
