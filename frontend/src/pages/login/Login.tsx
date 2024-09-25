@@ -1,4 +1,4 @@
-import {  useEffect } from "react";
+// import {  useEffect } from "react";
 import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../api/api";
@@ -19,7 +19,7 @@ const Login = () => {
         "user",
         JSON.stringify({ ...data.user, password: "" })
       );
-      navigate("/");
+      navigate("/notes");
     } catch (error) {
       console.log(error);
       message.error("something went wrong");
@@ -27,11 +27,11 @@ const Login = () => {
   };
 
   // prevent for login user
-  useEffect(() => {
-    if (localStorage.getItem("user")) {
-      navigate("/notes");
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   if (localStorage.getItem("user")) {
+  //     navigate("/notes");
+  //   }
+  // }, [navigate]);
 
   return (
     <>

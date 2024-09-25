@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { Form, Input, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -15,7 +15,6 @@ const Register = () => {
       
       await api.post('/users/register', values);
       message.success('Successfully registered!');
-      
       navigate('/login');
     } catch (error) {
       console.log(error);
