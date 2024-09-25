@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import userModel from "../models/user";
+import userModel from "./user.model";
 
 const loginController: RequestHandler = async (req, res) => {
   try {
@@ -22,6 +22,14 @@ const loginController: RequestHandler = async (req, res) => {
 
 const registerController: RequestHandler = async (req, res) => {
   try {
+    const {email} = req.body;
+    const existingUser = await userModel.findOne({email})
+    if(existingUser){
+      return res.status(400).send({
+        success: false,
+        error : "Email already exists. Please choose a unique email address."
+      })
+    }
     const newUser = new userModel(req.body);
     await newUser.save();
     res.status(201).send({

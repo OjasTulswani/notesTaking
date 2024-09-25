@@ -1,6 +1,11 @@
-import {InferSchemaType, model, Schema} from "mongoose";
+import mongoose, {InferSchemaType, model, Schema} from "mongoose";
 
 const noteSchema = new Schema({
+    user:{
+        type : mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User',
+    },
     title : {
         type : String,
         required : true

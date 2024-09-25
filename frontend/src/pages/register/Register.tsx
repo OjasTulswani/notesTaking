@@ -6,11 +6,17 @@ import api from '../../api/api';
 
 
 const Register = () => {
+  interface ValueType {
+    name?: string
+    email: string;
+    password: string;
+  }
   
   const navigate = useNavigate();
 
   // form submit
-  const submitHandler = async (values : undefined) => {
+  const submitHandler = async (values : ValueType ) => {
+    console.log(values);
     try {
       
       await api.post('/users/register', values);
@@ -47,7 +53,7 @@ const Register = () => {
           </Form.Item>
 
           <div className="flex justify-between">
-            <Link to="/login" >Already Register? Login...</Link>
+            <Link to="/login" className='p-3'>Already Register? Login...</Link>
             <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
               Register
             </button>

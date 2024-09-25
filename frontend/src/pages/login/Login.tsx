@@ -5,11 +5,16 @@ import api from "../../api/api";
 
 
 const Login = () => {
+  interface ValueType {
+    email: string;
+    password: string;
+  }
   
   const navigate = useNavigate();
 
   // form submit
-  const submitHandler = async (values : undefined) => {
+  const submitHandler = async (values : ValueType) => {
+    console.log(values);
     try {
       
       const { data } = await api.post("/users/login", values);
@@ -48,7 +53,7 @@ const Login = () => {
           </Form.Item>
 
           <div className="flex justify-between">
-            <Link to="/register" >Not a user? Register...</Link>
+            <Link to="/register" className="p-3" >Not a user? Register...</Link>
             <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
               Login
             </button>

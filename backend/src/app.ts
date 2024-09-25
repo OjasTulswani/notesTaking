@@ -1,6 +1,6 @@
 import express, { Express, Request, Response, NextFunction } from "express";
-import notesRoutes from './routes/note'
-import userRoutes from "./routes/user";
+import userRoutes from "./apis/user/user.route";
+import noteRoutes from "./apis/note/note.routes";
 import morgan from "morgan"; 
 import errorHandler from "./middlewares/errorHandler";
 import createHttpError from "http-errors";
@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use("/api/notes", notesRoutes);
+app.use("/api/notes", noteRoutes);
 
 app.use("/api/users", userRoutes);
 
